@@ -1,4 +1,4 @@
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 # Inspired by pytest_httpx
 
@@ -12,12 +12,13 @@ from aiohttp.typedefs import LooseCookies, LooseHeaders, Query, StrOrURL
 from multidict import CIMultiDict
 
 from pytest_aiohttp_mock._aiohttp_mock import AioHttpMock, _AioHttpMockOptions
-from pytest_aiohttp_mock._request import AioHttpRequest
+from pytest_aiohttp_mock._request import AioHttpRequest as AioHttpRequest
 
 HeaderTypes = CIMultiDict[str] | Mapping[str, str] | Sequence[tuple[str, str]]
 
 __all__ = (
     "AioHttpMock",
+    "AioHttpRequest",
     "__version__",
 )
 
