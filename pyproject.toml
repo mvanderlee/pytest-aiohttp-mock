@@ -1,0 +1,97 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytest-aiohttp-mock"
+description = "Send responses to aiohttp."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  { name = "Michiel Vanderlee", email = "jmt.vanderlee@gmail.com" },
+]
+keywords = [
+    "aiohttp",
+    "pytest",
+    "testing",
+    "mock",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Build Tools",
+    "Typing :: Typed",
+]
+dependencies = [
+    "aiohttp>=3.12.0",
+    "orjson>=3.10",
+    "pytest>=8",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/mvanderlee/pytest-aiohttp-mock"
+
+
+[project.entry-points.pytest11]
+pytest_aiohttp_mock = "pytest_aiohttp_mock"
+
+
+[tool.hatch.version]
+path = "pytest_aiohttp_mock/__init__.py"
+
+[tool.ruff]
+exclude = [
+    "*.ipynb",
+    "**/_version.py",
+]
+lint.select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "A",  # flake8-builtins
+    "N",  # pep8-naming
+    "UP",  # pyupgrade
+    "S",  # flake8-bandit
+    "COM",  # flake8-commas
+    "ISC",  # flake8-implicit-str-concat
+    "INP",  # flake8-no-pep420
+    "PIE",  # flake8-pie
+    "SIM",  # flake8-simplify
+    "RUF",  # Ruff-specific rules
+    "T20",  # flake8-print
+    "PT",  # flake8-pytest-style
+]
+lint.ignore = [
+    "S101",
+]
+line-length = 110
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.11"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "pyright[nodejs]>=1.1.405",
+    "ruff>=0.13.0",
+]
+publish = [
+    "hatch>=1.14.1",
+]

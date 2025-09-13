@@ -1,0 +1,33 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: check-added-large-files
+    exclude: ^uv.lock
+  - id: check-shebang-scripts-are-executable
+  # - id: check-yaml
+  - id: detect-aws-credentials
+  - id: detect-private-key
+  - id: mixed-line-ending
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.13.0
+  hooks:
+    # Run the linter.
+    - id: ruff-check
+      args: [ --fix ]
+      types_or: [ python, pyi ]
+    # Run the formatter.
+    - id: ruff-format
+      types_or: [ python, pyi ]
+
+- repo: https://github.com/RobertCraigie/pyright-python
+  rev: v1.1.405
+  hooks:
+  - id: pyright
+
+ci:
+  autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
+  autoupdate_commit_msg: ⬆ [pre-commit.ci] pre-commit autoupdate
