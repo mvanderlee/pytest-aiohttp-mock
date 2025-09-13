@@ -11,11 +11,7 @@ class RequestDescription:
         self.request = request
 
         self.expected_headers = {
-            # httpx uses lower cased header names as internal key
-            header.lower().encode()
-            for matcher in matchers
-            if matcher.headers
-            for header in matcher.headers
+            header.lower().encode() for matcher in matchers if matcher.headers for header in matcher.headers
         }
 
     def __str__(self) -> str:

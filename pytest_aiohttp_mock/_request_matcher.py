@@ -71,7 +71,6 @@ class _RequestMatcher:
             return True
 
         request_headers = {}
-        # Can be cleaned based on the outcome of https://github.com/encode/httpx/discussions/2841
         for raw_name, raw_value in request.ci_headers:
             if raw_name in request_headers:
                 request_headers[raw_name] += ", " + raw_value

@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Inspired by pytest_httpx
 
@@ -28,7 +28,7 @@ def aiohttp_mock(
     request: pytest.FixtureRequest,
 ):
     options = {}
-    for marker in request.node.iter_markers("httpx_mock"):
+    for marker in request.node.iter_markers("aiohttp_mock"):
         options = marker.kwargs | options
     __tracebackhide__ = methodcaller("errisinstance", TypeError)
     options = _AioHttpMockOptions(**options)
@@ -89,5 +89,5 @@ def aiohttp_mock(
 def pytest_configure(config: pytest.Config) -> None:
     config.addinivalue_line(
         "markers",
-        "aiohttp_mock(*, assert_all_responses_were_requested=True, assert_all_requests_were_expected=True, can_send_already_matched_responses=False, should_mock=lambda request: True): Configure httpx_mock fixture.",  # noqa: E501
+        "aiohttp_mock(*, assert_all_responses_were_requested=True, assert_all_requests_were_expected=True, can_send_already_matched_responses=False, should_mock=lambda request: True): Configure aiohttp_mock fixture.",  # noqa: E501
     )
